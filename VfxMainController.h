@@ -1,5 +1,5 @@
 //
-//  VF_X264AppDelegate.h
+//  VfxMainController.h
 //  VF-X264
 //
 //  Created by John Paul Alcala on 10/29/10.
@@ -8,11 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface VF_X264AppDelegate : NSObject <NSApplicationDelegate> {
-    NSWindow *window;
+
+@interface VfxMainController : NSObject {
 	IBOutlet NSPathControl *destinationPath;
 }
 
-@property (assign) IBOutlet NSWindow *window;
+-(IBAction) selectDestination:(id)sender;
 
 @end

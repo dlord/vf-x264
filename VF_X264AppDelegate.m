@@ -14,6 +14,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application 
+	NSURL *url=[NSURL fileURLWithPath:NSHomeDirectory() isDirectory:YES];
+	
+	[destinationPath setURL:url];
 }
 
 @end
