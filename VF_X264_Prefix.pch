@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'VF-X264' target in the 'VF-X264' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
