@@ -36,4 +36,33 @@
 	}
 }
 
+-(IBAction) testPlay:(id)sender {
+	NSBundle *mainBundle=[NSBundle mainBundle];
+	NSString *mplayerPath=[mainBundle pathForResource:@"mplayer" ofType:nil inDirectory:@"Binaries"];
+	NSString *mplayerCodecsConfPath=[mainBundle pathForResource:@"codecs" ofType:@"conf"];
+	
+	NSLog(@"mplayer location: %@", mplayerPath);
+	NSLog(@"mplayer config location: %@", mplayerCodecsConfPath);
+	//NSLog(@"param: %@", [NSString stringWithFormat:@"-codecs-file \"%@\"", mplayerCodecsConfPath]);
+		
+	NSMutableArray *mplayerArgs=[NSMutableArray array];
+	[mplayerArgs addObject:@"-codecs-file"];
+	[mplayerArgs addObject:mplayerCodecsConfPath];
+	[mplayerArgs addObject:@"-really-quiet"];
+	[mplayerArgs addObject:@"-vo"];
+	[mplayerArgs addObject:@"corevideo:buffer_name=mplayerVFX"];
+	[mplayerArgs addObject:@"/Users/dragonlord/tmp/test.mp4"];
+	
+	NSTask *mplayerTask=[[NSTask alloc] init];
+	[mplayerTask setStandardInput:[NSPipe pipe]];
+	[mplayerTask setStandardOutput:[NSPipe pipe]];
+	[mplayerTask setStandardError:[NSPipe pipe]];
+	
+	[mplayerTask setArguments:mplayerArgs];
+	[mplayerTask setLaunchPath:mplayerPath];
+	
+	[mplayerTask launch];
+	[mplayerTask release];
+}
+
 @end

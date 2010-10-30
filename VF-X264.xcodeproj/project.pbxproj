@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1BF350AF127B11F1003C940E /* VfxMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF350AE127B11F1003C940E /* VfxMainController.m */; };
-		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		1BF3511E127BED02003C940E /* VF_X264-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* VF_X264-Info.plist */; };
+		1BF3511F127BED02003C940E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		1BF35120127BED02003C940E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		1BF35124127BED4F003C940E /* Binaries in Resources */ = {isa = PBXBuildFile; fileRef = 1BF35121127BED4F003C940E /* Binaries */; };
+		1BF35127127BED8B003C940E /* codecs.conf in Resources */ = {isa = PBXBuildFile; fileRef = 1BF35125127BED8B003C940E /* codecs.conf */; };
 		256AC3DA0F4B6AC300CF3369 /* VF_X264AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* VF_X264AppDelegate.m */; };
-		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -21,6 +24,8 @@
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1BF350AD127B11F1003C940E /* VfxMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VfxMainController.h; sourceTree = "<group>"; };
 		1BF350AE127B11F1003C940E /* VfxMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VfxMainController.m; sourceTree = "<group>"; };
+		1BF35121127BED4F003C940E /* Binaries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Binaries; sourceTree = "<group>"; };
+		1BF35125127BED8B003C940E /* codecs.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = codecs.conf; sourceTree = "<group>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* VF_X264AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VF_X264AppDelegate.h; sourceTree = "<group>"; };
 		256AC3D90F4B6AC300CF3369 /* VF_X264AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VF_X264AppDelegate.m; sourceTree = "<group>"; };
@@ -105,6 +110,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1BF35121127BED4F003C940E /* Binaries */,
+				1BF35125127BED8B003C940E /* codecs.conf */,
 				8D1107310486CEB800E47090 /* VF_X264-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -164,8 +171,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
-				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				1BF3511E127BED02003C940E /* VF_X264-Info.plist in Resources */,
+				1BF3511F127BED02003C940E /* InfoPlist.strings in Resources */,
+				1BF35120127BED02003C940E /* MainMenu.xib in Resources */,
+				1BF35124127BED4F003C940E /* Binaries in Resources */,
+				1BF35127127BED8B003C940E /* codecs.conf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

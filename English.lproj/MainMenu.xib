@@ -1439,7 +1439,7 @@
 										<int key="NSCellFlags2">1024</int>
 										<string key="NSContents">Macintosh HD</string>
 										<reference key="NSSupport" ref="26"/>
-										<object class="NSColor" key="NSBackgroundColor" id="105053711">
+										<object class="NSColor" key="NSBackgroundColor" id="782060342">
 											<int key="NSColorSpace">6</int>
 											<string key="NSCatalogName">System</string>
 											<string key="NSColorName">textBackgroundColor</string>
@@ -1467,7 +1467,7 @@
 										<int key="NSCellFlags2">1024</int>
 										<string key="NSContents">~</string>
 										<reference key="NSSupport" ref="26"/>
-										<reference key="NSBackgroundColor" ref="105053711"/>
+										<reference key="NSBackgroundColor" ref="782060342"/>
 										<reference key="NSTextColor" ref="104272548"/>
 										<object class="NSURL" key="NSURL">
 											<nil key="NS.base"/>
@@ -1783,7 +1783,7 @@
 			<object class="NSCustomObject" id="755631768">
 				<string key="NSClassName">NSFontManager</string>
 			</object>
-			<object class="NSCustomObject" id="638227874">
+			<object class="NSCustomObject" id="404415803">
 				<string key="NSClassName">VfxMainController</string>
 			</object>
 		</object>
@@ -2473,7 +2473,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">destinationPath</string>
-						<reference key="source" ref="638227874"/>
+						<reference key="source" ref="404415803"/>
 						<reference key="destination" ref="513099035"/>
 					</object>
 					<int key="connectionID">576</int>
@@ -2481,7 +2481,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">selectDestination:</string>
-						<reference key="source" ref="638227874"/>
+						<reference key="source" ref="404415803"/>
 						<reference key="destination" ref="513099035"/>
 					</object>
 					<int key="connectionID">581</int>
@@ -2493,6 +2493,14 @@
 						<reference key="destination" ref="513099035"/>
 					</object>
 					<int key="connectionID">583</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">testPlay:</string>
+						<reference key="source" ref="404415803"/>
+						<reference key="destination" ref="886802622"/>
+					</object>
+					<int key="connectionID">584</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3756,7 +3764,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">575</int>
-						<reference key="object" ref="638227874"/>
+						<reference key="object" ref="404415803"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</object>
@@ -4182,9 +4190,9 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{313, 44}, {781, 591}}</string>
+					<string>{{315, -13}, {781, 591}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{313, 44}, {781, 591}}</string>
+					<string>{{315, -13}, {781, 591}}</string>
 					<integer value="1"/>
 					<string>{{33, 99}, {480, 360}}</string>
 					<boolean value="YES"/>
@@ -4356,7 +4364,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">583</int>
+			<int key="maxID">584</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4405,14 +4413,35 @@
 					<string key="className">VfxMainController</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">selectDestination:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>selectDestination:</string>
+							<string>testPlay:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">selectDestination:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">selectDestination:</string>
-							<string key="candidateClassName">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>selectDestination:</string>
+							<string>testPlay:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">selectDestination:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">testPlay:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">

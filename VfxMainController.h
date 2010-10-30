@@ -15,4 +15,6 @@
 
 -(IBAction) selectDestination:(id)sender;
 
+-(IBAction) testPlay:(id)sender;
+
 @end
