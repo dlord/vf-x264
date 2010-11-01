@@ -7,6 +7,7 @@
 //
 
 #import "VF_X264AppDelegate.h"
+#import "Constants.h"
 
 @implementation VF_X264AppDelegate
 
@@ -18,6 +19,13 @@
 	
 	[destinationPath setURL:url];
 	[destinationPath sizeToFit];
+	
+	[targetFormatDropdown removeAllItems];
+	[targetFormatDropdown addItemWithTitle:IPHONE];
+	[targetFormatDropdown addItemWithTitle:IPOD];
+	[targetFormatDropdown addItemWithTitle:PS3];
+	[targetFormatDropdown addItemWithTitle:PSP];
+	[targetFormatDropdown addItemWithTitle:PHONE];
 }
 
 @end

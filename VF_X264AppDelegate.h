@@ -11,6 +11,7 @@
 @interface VF_X264AppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
 	IBOutlet NSPathControl *destinationPath;
+	IBOutlet NSPopUpButton *targetFormatDropdown;
 }
 
 @property (assign) IBOutlet NSWindow *window;
