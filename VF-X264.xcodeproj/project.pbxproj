@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B8225E2127E8C5E00270F9D /* InputSourceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B8225E1127E8C5E00270F9D /* InputSourceController.m */; };
 		1BF350AF127B11F1003C940E /* VfxMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF350AE127B11F1003C940E /* VfxMainController.m */; };
 		1BF3511E127BED02003C940E /* VF_X264-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* VF_X264-Info.plist */; };
 		1BF3511F127BED02003C940E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -25,6 +26,8 @@
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1B8225E0127E8C5E00270F9D /* InputSourceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputSourceController.h; sourceTree = "<group>"; };
+		1B8225E1127E8C5E00270F9D /* InputSourceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputSourceController.m; sourceTree = "<group>"; };
 		1BF350AD127B11F1003C940E /* VfxMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VfxMainController.h; sourceTree = "<group>"; };
 		1BF350AE127B11F1003C940E /* VfxMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VfxMainController.m; sourceTree = "<group>"; };
 		1BF35121127BED4F003C940E /* Binaries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Binaries; sourceTree = "<group>"; };
@@ -69,6 +72,8 @@
 				1BF35247127C372E003C940E /* ProcessingController.m */,
 				1BF35250127C3DDA003C940E /* SettingsFactory.h */,
 				1BF35251127C3DDA003C940E /* SettingsFactory.m */,
+				1B8225E0127E8C5E00270F9D /* InputSourceController.h */,
+				1B8225E1127E8C5E00270F9D /* InputSourceController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				1BF35248127C372E003C940E /* ProcessingController.m in Sources */,
 				1BF35252127C3DDA003C940E /* SettingsFactory.m in Sources */,
 				1BF35263127C4550003C940E /* Constants.m in Sources */,
+				1B8225E2127E8C5E00270F9D /* InputSourceController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
