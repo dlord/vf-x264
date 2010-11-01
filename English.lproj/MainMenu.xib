@@ -1717,18 +1717,18 @@
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
-						<object class="NSButton" id="50854989">
+						<object class="NSButton" id="766894989">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 19}, {23, 24}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="258654702">
+							<object class="NSButtonCell" key="NSCell" id="72799105">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="790401562"/>
-								<reference key="NSControlView" ref="50854989"/>
+								<reference key="NSControlView" ref="766894989"/>
 								<int key="NSButtonFlags">-2033958657</int>
 								<int key="NSButtonFlags2">162</int>
 								<object class="NSCustomResource" key="NSNormalImage">
@@ -1741,18 +1741,18 @@
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
-						<object class="NSButton" id="607987831">
+						<object class="NSButton" id="779205040">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{42, 19}, {23, 24}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="226303767">
+							<object class="NSButtonCell" key="NSCell" id="650637665">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="790401562"/>
-								<reference key="NSControlView" ref="607987831"/>
+								<reference key="NSControlView" ref="779205040"/>
 								<int key="NSButtonFlags">-2033958657</int>
 								<int key="NSButtonFlags2">162</int>
 								<object class="NSCustomResource" key="NSNormalImage">
@@ -2524,7 +2524,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">addInputFiles:</string>
 						<reference key="source" ref="600455487"/>
-						<reference key="destination" ref="50854989"/>
+						<reference key="destination" ref="766894989"/>
 					</object>
 					<int key="connectionID">600</int>
 				</object>
@@ -2532,7 +2532,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">removeInputFiles:</string>
 						<reference key="source" ref="600455487"/>
-						<reference key="destination" ref="607987831"/>
+						<reference key="destination" ref="779205040"/>
 					</object>
 					<int key="connectionID">601</int>
 				</object>
@@ -2543,6 +2543,38 @@
 						<reference key="destination" ref="843725946"/>
 					</object>
 					<int key="connectionID">602</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">inputSourceController</string>
+						<reference key="source" ref="880885618"/>
+						<reference key="destination" ref="600455487"/>
+					</object>
+					<int key="connectionID">603</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">destinationPath</string>
+						<reference key="source" ref="880885618"/>
+						<reference key="destination" ref="513099035"/>
+					</object>
+					<int key="connectionID">604</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">targetFormatDropdown</string>
+						<reference key="source" ref="880885618"/>
+						<reference key="destination" ref="843725946"/>
+					</object>
+					<int key="connectionID">605</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">stopProcessing:</string>
+						<reference key="source" ref="880885618"/>
+						<reference key="destination" ref="988376196"/>
+					</object>
+					<int key="connectionID">606</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3106,8 +3138,8 @@
 							<reference ref="886802622"/>
 							<reference ref="988376196"/>
 							<reference ref="619879471"/>
-							<reference ref="50854989"/>
-							<reference ref="607987831"/>
+							<reference ref="766894989"/>
+							<reference ref="779205040"/>
 						</object>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -3793,31 +3825,31 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">596</int>
-						<reference key="object" ref="50854989"/>
+						<reference key="object" ref="766894989"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="258654702"/>
+							<reference ref="72799105"/>
 						</object>
 						<reference key="parent" ref="439893737"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">597</int>
-						<reference key="object" ref="258654702"/>
-						<reference key="parent" ref="50854989"/>
+						<reference key="object" ref="72799105"/>
+						<reference key="parent" ref="766894989"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">598</int>
-						<reference key="object" ref="607987831"/>
+						<reference key="object" ref="779205040"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="226303767"/>
+							<reference ref="650637665"/>
 						</object>
 						<reference key="parent" ref="439893737"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">599</int>
-						<reference key="object" ref="226303767"/>
-						<reference key="parent" ref="607987831"/>
+						<reference key="object" ref="650637665"/>
+						<reference key="parent" ref="779205040"/>
 					</object>
 				</object>
 			</object>
@@ -4241,9 +4273,9 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{321, 223}, {781, 591}}</string>
+					<string>{{329, 101}, {781, 591}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{321, 223}, {781, 591}}</string>
+					<string>{{329, 101}, {781, 591}}</string>
 					<integer value="1"/>
 					<string>{{33, 99}, {480, 360}}</string>
 					<boolean value="YES"/>
@@ -4414,7 +4446,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">602</int>
+			<int key="maxID">606</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4502,6 +4534,45 @@
 							<object class="IBActionInfo">
 								<string key="name">stopProcessing:</string>
 								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>destinationPath</string>
+							<string>inputSourceController</string>
+							<string>targetFormatDropdown</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSPathControl</string>
+							<string>InputSourceController</string>
+							<string>NSPopUpButton</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>destinationPath</string>
+							<string>inputSourceController</string>
+							<string>targetFormatDropdown</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">destinationPath</string>
+								<string key="candidateClassName">NSPathControl</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">inputSourceController</string>
+								<string key="candidateClassName">InputSourceController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">targetFormatDropdown</string>
+								<string key="candidateClassName">NSPopUpButton</string>
 							</object>
 						</object>
 					</object>

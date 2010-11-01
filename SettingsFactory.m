@@ -83,6 +83,8 @@
 		[settings addObject:@"720"];
 	}
 	
+	[settings addObjectsFromArray:[SettingsFactory x264GenericSettings]];
+	
 	return settings;
 }
 
@@ -102,6 +104,9 @@
 	[settings addObject:@"auto"];
 	[settings addObject:@"--no-fast-pskip"];
 	[settings addObject:@"--quiet"];
+	[settings addObject:@"-o"];
+	[settings addObject:@"/Users/dragonlord/tmp2/output.264"];
+	[settings addObject:@"/Users/dragonlord/tmp2/video.y4m"];	
 	
 	return settings;
 }
@@ -126,10 +131,15 @@
 		[settings addObject:@"dsize=320:240:0,scale=0:0,harddup"];
 	}
 	
+	[settings addObjectsFromArray:[SettingsFactory mplayerGenericSettings]];
+	
 	return settings;
 }
 
 +(NSMutableArray *) mplayerGenericSettings {
+	NSBundle *mainBundle=[NSBundle mainBundle];
+	NSString *mplayerCodecsConfPath=[mainBundle pathForResource:@"codecs" ofType:@"conf"];
+	
 	NSMutableArray *settings=[NSMutableArray array];
 
 	[settings addObject:@"-benchmark"];
@@ -147,6 +157,9 @@
 	[settings addObject:@"-sws"];
 	[settings addObject:@"9"];
 	[settings addObject:@"-ass"];
+	[settings addObject:@"-codecs-file"];
+	[settings addObject:mplayerCodecsConfPath];
+	[settings addObject:@"-quiet"];	
 	
 	return settings;
 }

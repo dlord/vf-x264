@@ -7,18 +7,23 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "InputSourceController.h"
 
 @interface ProcessingController : NSObject {
 	BOOL isProcessing;
+	NSMutableArray *runningTasks;
 	
+	IBOutlet InputSourceController *inputSourceController;
+	IBOutlet NSPopUpButton *targetFormatDropdown;
+	IBOutlet NSPathControl *destinationPath;
 }
 
 -(IBAction) startProcessing:(id)sender;
 -(IBAction) stopProcessing:(id)sender;
 
--(BOOL) isProcessing;
+-(void) addRunningTask:(NSTask *)task;
+-(void) clearRunningTasks;
 
--(void) readPipe:(NSNotification *) notification;
+-(BOOL) isProcessing;
 
 @end

@@ -10,22 +10,62 @@
 #import "SettingsFactory.h"
 #import "Constants.h"
 
+@interface ProcessingController()
+
+-(void) startBackgroundProcessing;
+-(NSDictionary *) identifyFile:(NSString *)filename;
+-(void) mkfifo;
+-(void) runX264;
+-(void) extractAudioAndVideoFromFile:(NSString *)filename;
+-(void) convertAudioToAac;
+-(void) createMP4PackageUsingFilename:(NSString *)filename andParams:(NSDictionary *)params;
+
+@end
+
+
 @implementation ProcessingController
 
 -(IBAction) startProcessing:(id)sender {
+	[self performSelectorInBackground:@selector(startBackgroundProcessing) withObject:nil];
+}
+
+-(void) startBackgroundProcessing {
+	isProcessing=YES;
+
 	NSAutoreleasePool *pool=[[NSAutoreleasePool alloc] init];
 	
+	NSArray *inputFiles=inputSourceController.inputFiles;
+	
+	for(NSURL *file in inputFiles) {
+		NSDictionary *fileParams=[self identifyFile:[file path]];
+		
+		if ([fileParams count]>1 && isProcessing) {
+			[self mkfifo];
+		}
+		
+		if (isProcessing) {
+			[self runX264];
+			[self extractAudioAndVideoFromFile:[file path]];
+		}
+		
+		if (isProcessing) {
+			[self convertAudioToAac];
+		}
+		
+		if (isProcessing) {
+			[self createMP4PackageUsingFilename:[file lastPathComponent] andParams:fileParams];
+		}
+	}
+	
+	[pool drain];
+}
+
+-(NSDictionary *) identifyFile:(NSString *)filename {
 	NSBundle *mainBundle=[NSBundle mainBundle];
-	NSString *mplayerPath=[mainBundle pathForResource:@"mplayer" ofType:nil inDirectory:@"Binaries"];
-	NSString *x264Path=[mainBundle pathForResource:@"x264" ofType:nil inDirectory:@"Binaries"];
-	NSString *mp4boxPath=[mainBundle pathForResource:@"MP4Box" ofType:nil inDirectory:@"Binaries"];
 	NSString *midentifyPath=[mainBundle pathForResource:@"midentify" ofType:nil inDirectory:@"Binaries"];
-	NSString *mplayerCodecsConfPath=[mainBundle pathForResource:@"codecs" ofType:@"conf"];
-	NSString *mkfifoPath=@"/usr/bin/mkfifo";
-	NSString *afconvertPath=@"/usr/bin/afconvert";
 	
 	NSMutableArray *midentifyArgs=[NSMutableArray array];
-	[midentifyArgs addObject:@"/Users/dragonlord/tmp/test.mkv"];
+	[midentifyArgs addObject:filename];
 	
 	// identify the file before doing anything.
 	NSTask *midentifyTask=[[NSTask alloc] init];
@@ -35,9 +75,11 @@
 	[midentifyTask setCurrentDirectoryPath:[midentifyPath stringByDeletingLastPathComponent]];
 	[midentifyTask setStandardOutput:midentifyPipe];
 	[midentifyTask setStandardInput:[NSPipe pipe]];
+
+	[self addRunningTask:midentifyTask];
 	[midentifyTask launch];
 	[midentifyTask waitUntilExit];
-	//[midentifyTask release];
+	[self clearRunningTasks];
 	
 	// process video info into a dictionary
 	NSData *midentifyOutput=[[midentifyPipe fileHandleForReading] readDataToEndOfFile];
@@ -52,83 +94,137 @@
 		}
 	}
 	
-	NSLog(@"retrived fps: %@", [videoInfoDict valueForKey:@"ID_VIDEO_FPS"]);
-	
-	
+	return videoInfoDict;
+}
+
+-(void) mkfifo {
+	NSString *mkfifoPath=@"/usr/bin/mkfifo";
 	NSMutableArray *mkfifoArgs=[NSMutableArray array];
 	//[mkfifoArgs addObject:[NSTemporaryDirectory() stringByAppendingPathComponent:@"video.y4m"]];
 	[mkfifoArgs addObject:@"/Users/dragonlord/tmp2/video.y4m"];
 	
-	NSMutableArray *x264Args=[SettingsFactory x264GenericSettings];
-	[x264Args addObjectsFromArray:[SettingsFactory x264SettingsForDevice:PHONE]];
-	[x264Args addObject:@"-o"];
-	[x264Args addObject:@"/Users/dragonlord/tmp2/output.264"];
-	[x264Args addObject:@"/Users/dragonlord/tmp2/video.y4m"];
+	NSTask *task=[[NSTask alloc] init];
+	[task setLaunchPath:mkfifoPath];
+	[task setArguments:mkfifoArgs];
 	
-	NSMutableArray *mplayerArgs=[SettingsFactory mplayerGenericSettings];
-	[mplayerArgs addObjectsFromArray:[SettingsFactory mplayerSettingsForDevice:PHONE]];
-	[mplayerArgs addObject:@"-codecs-file"];
-	[mplayerArgs addObject:mplayerCodecsConfPath];
-	[mplayerArgs addObject:@"-quiet"];
-	[mplayerArgs addObject:@"/Users/dragonlord/tmp/test.mkv"];
+	[self addRunningTask:task];
+	[task launch];
+	[task waitUntilExit];
+	[self clearRunningTasks];
+}
+
+-(void) runX264 {
+	NSBundle *mainBundle=[NSBundle mainBundle];
+	NSString *x264Path=[mainBundle pathForResource:@"x264" ofType:nil inDirectory:@"Binaries"];
+	
+	NSMutableArray *x264Args=[SettingsFactory x264SettingsForDevice:[targetFormatDropdown titleOfSelectedItem]];
+	
+	NSTask *task=[[NSTask alloc] init];
+	[task setLaunchPath:x264Path];
+	[task setArguments:x264Args];
+	
+	[self addRunningTask:task];
+	[task launch];
+}
+
+-(void) extractAudioAndVideoFromFile:(NSString *)filename {
+	NSBundle *mainBundle=[NSBundle mainBundle];
+	NSString *mplayerPath=[mainBundle pathForResource:@"mplayer" ofType:nil inDirectory:@"Binaries"];
+	
+	NSMutableArray *mplayerArgs=[SettingsFactory mplayerSettingsForDevice:[targetFormatDropdown titleOfSelectedItem]];
+	[mplayerArgs addObject:filename];
+	
+	NSTask *task=[[NSTask alloc] init];
+	[task setLaunchPath:mplayerPath];
+	[task setArguments:mplayerArgs];
+
+	[self addRunningTask:task];
+	[task launch];
+	[task waitUntilExit];
+	[self clearRunningTasks];
+}
+
+-(void) convertAudioToAac {
+	NSString *afconvertPath=@"/usr/bin/afconvert";
 	
 	NSMutableArray *afconvertArgs=[SettingsFactory afconvertSettings];
 	
+	NSTask *task=[[NSTask alloc] init];
+	[task setLaunchPath:afconvertPath];
+	[task setArguments:afconvertArgs];
+
+	[self addRunningTask:task];
+	[task launch];
+	[task waitUntilExit];
+	[self clearRunningTasks];
+}
+
+-(void) createMP4PackageUsingFilename:(NSString *)filename andParams:(NSDictionary *)params {
+	NSBundle *mainBundle=[NSBundle mainBundle];
+	NSString *mp4boxPath=[mainBundle pathForResource:@"MP4Box" ofType:nil inDirectory:@"Binaries"];
+	
 	NSMutableArray *mp4boxArgs=[SettingsFactory mp4boxSettings];
 	[mp4boxArgs addObject:@"-fps"];
-	[mp4boxArgs addObject:[videoInfoDict valueForKey:@"ID_VIDEO_FPS"]];
+	[mp4boxArgs addObject:[params valueForKey:@"ID_VIDEO_FPS"]];
 	[mp4boxArgs addObject:@"-new"];
-	[mp4boxArgs addObject:@"/Users/dragonlord/tmp2/test.mp4"];
 	
-	NSTask *mkfifoTask=[[NSTask alloc] init];
-	[mkfifoTask setLaunchPath:mkfifoPath];
-	[mkfifoTask setArguments:mkfifoArgs];
-	[mkfifoTask launch];
-	[mkfifoTask waitUntilExit];
-	[mkfifoTask release];
-			
-	NSTask *x264Task=[[NSTask alloc] init];
-	[x264Task setLaunchPath:x264Path];
-	[x264Task setArguments:x264Args];
+	NSString *destinationFile=[[[destinationPath URL] path] stringByAppendingPathComponent:filename];
+	destinationFile=[[destinationFile stringByDeletingPathExtension] stringByAppendingPathExtension:@"mp4"];
 	
-	NSTask *mplayerTask=[[NSTask alloc] init];
-	[mplayerTask setLaunchPath:mplayerPath];
-	[mplayerTask setArguments:mplayerArgs];
+	[mp4boxArgs addObject:destinationFile];
 	
-	[x264Task launch];
-	[mplayerTask launch];
-	[mplayerTask waitUntilExit];
-	[mplayerTask release];
-	[x264Task release];
+	NSTask *task=[[NSTask alloc] init];
+	[task setLaunchPath:mp4boxPath];
+	[task setArguments:mp4boxArgs];
 	
-	NSTask *afconvertTask=[[NSTask alloc] init];
-	[afconvertTask setLaunchPath:afconvertPath];
-	[afconvertTask setArguments:afconvertArgs];
-	[afconvertTask launch];
-	[afconvertTask waitUntilExit];
-	[afconvertTask release];
-	
-	NSTask *mp4boxTask=[[NSTask alloc] init];
-	[mp4boxTask setLaunchPath:mp4boxPath];
-	[mp4boxTask setArguments:mp4boxArgs];
-	[mp4boxTask launch];
-	[mp4boxTask waitUntilExit];
-	[mp4boxTask release];
-	
-	NSLog(@"End of start method.");
-	
-	[pool drain];
+	[self addRunningTask:task];
+	[task launch];
+	[task waitUntilExit];
+	[self clearRunningTasks];
 }
 
 -(IBAction) stopProcessing:(id)sender {
+	@synchronized(self) {
+		isProcessing=NO;
+	}
+	
+	@synchronized(self) {
+		for(NSTask *task in runningTasks) {
+			[task terminate];
+		}
+	}
+	
+	[self clearRunningTasks];
+}
+
+-(void) addRunningTask:(NSTask *)task {
+	@synchronized(self) {
+		if (runningTasks==nil) {
+			runningTasks=[NSMutableArray array];
+			[runningTasks retain];
+		}
+		
+		[runningTasks addObject:task];
+	}
+}
+
+-(void) clearRunningTasks {
+	@synchronized(self) {
+		if (runningTasks==nil) {
+			runningTasks=[NSMutableArray array];
+			[runningTasks retain];
+		}
+		
+		for(NSTask *task in runningTasks) {
+			[task release];
+		}
+		
+		[runningTasks removeAllObjects];
+	}
 }
 
 -(BOOL) isProcessing {
 	return isProcessing;
-}
-
--(void) readPipe:(NSNotification *) notification {
-	
 }
 
 @end
