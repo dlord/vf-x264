@@ -17,6 +17,7 @@
 	NSURL *url=[NSURL fileURLWithPath:NSHomeDirectory() isDirectory:YES];
 	
 	[destinationPath setURL:url];
+	[destinationPath sizeToFit];
 }
 
 @end

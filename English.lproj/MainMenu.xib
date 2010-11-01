@@ -1411,7 +1411,7 @@
 									<string>NSFilenamesPboardType</string>
 								</object>
 							</object>
-							<string key="NSFrame">{{146, 514}, {617, 20}}</string>
+							<string key="NSFrame">{{146, 514}, {115, 20}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPathCell" key="NSCell" id="451471247">
@@ -1420,7 +1420,7 @@
 								<object class="NSURL" key="NSContents">
 									<nil key="NS.base"/>
 									<object class="NSMutableString" key="NS.relative">
-										<characters key="NS.bytes">file://localhost/~</characters>
+										<characters key="NS.bytes">file://localhost/</characters>
 									</object>
 								</object>
 								<object class="NSFont" key="NSSupport" id="26">
@@ -1436,7 +1436,7 @@
 										<int key="NSCellFlags2">1024</int>
 										<string key="NSContents">Macintosh HD</string>
 										<reference key="NSSupport" ref="26"/>
-										<object class="NSColor" key="NSBackgroundColor" id="258876793">
+										<object class="NSColor" key="NSBackgroundColor">
 											<int key="NSColorSpace">6</int>
 											<string key="NSCatalogName">System</string>
 											<string key="NSColorName">textBackgroundColor</string>
@@ -1457,18 +1457,6 @@
 										<object class="NSURL" key="NSURL">
 											<nil key="NS.base"/>
 											<string key="NS.relative">file://localhost//</string>
-										</object>
-									</object>
-									<object class="NSPathComponentCell">
-										<int key="NSCellFlags">67239488</int>
-										<int key="NSCellFlags2">1024</int>
-										<string key="NSContents">~</string>
-										<reference key="NSSupport" ref="26"/>
-										<reference key="NSBackgroundColor" ref="258876793"/>
-										<reference key="NSTextColor" ref="104272548"/>
-										<object class="NSURL" key="NSURL">
-											<nil key="NS.base"/>
-											<string key="NS.relative">file://localhost/~</string>
 										</object>
 									</object>
 								</object>
@@ -4034,10 +4022,8 @@
 					<string>573.IBPluginDependency</string>
 					<string>573.IBViewIntegration.shadowColor</string>
 					<string>574.IBPluginDependency</string>
-					<string>575.IBPluginDependency</string>
 					<string>58.IBPluginDependency</string>
 					<string>58.ImportedFromIB2</string>
-					<string>585.IBPluginDependency</string>
 					<string>72.IBPluginDependency</string>
 					<string>72.ImportedFromIB2</string>
 					<string>73.IBPluginDependency</string>
@@ -4196,9 +4182,9 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{315, 182}, {781, 591}}</string>
+					<string>{{321, 142}, {781, 591}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{315, 182}, {781, 591}}</string>
+					<string>{{321, 142}, {781, 591}}</string>
 					<integer value="1"/>
 					<string>{{33, 99}, {480, 360}}</string>
 					<boolean value="YES"/>
@@ -4324,9 +4310,7 @@
 					<reference ref="318205843"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

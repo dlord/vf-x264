@@ -33,6 +33,7 @@
 		NSLog(@"Selected URL: %@", selectedUrl);
 		
 		[destinationPath setURL:selectedUrl];
+		[destinationPath sizeToFit];
 	}
 }
 
